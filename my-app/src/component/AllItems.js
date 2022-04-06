@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
+import ListOfItems from './ListOfItems'
+import { SelectedContext } from './context/SelectedContext'
 
 const AllItems = () => {
     //-----state for url items------
     const [todo, setTodo] = useState([])
+    const { addToContext, removeFromContext } = useContext(SelectedContext)
 
     useEffect(() =>
-        fetch('https://624c34b4d71863d7a806064d.mockapi.io/api/todo/todolist')
+        fetch('')
             .then(response => response.json())
             .then(data => setTodo([data]))
         , [])
@@ -13,7 +16,13 @@ const AllItems = () => {
 
     // Add/Remove checked item from list
     const selectHandler =(event) => {
-       
+        const targetValue = event.target.value
+        const TargetId = event.target.id
+        const ValueAndAndId = {
+            text: targetValue,
+            id: TargetId
+        }
+        event.target.checked ? addToContext(ValueAndAndId) : removeFromContext(ValueAndAndId)
     }
 
     return (
