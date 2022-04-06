@@ -8,7 +8,7 @@ const AllItems = () => {
     const { addToContext, removeFromContext } = useContext(SelectedContext)
 
     useEffect(() =>
-        fetch('')
+        fetch('https://624c34b4d71863d7a806064d.mockapi.io/api/todo/todolist')
             .then(response => response.json())
             .then(data => setTodo([data]))
         , [])

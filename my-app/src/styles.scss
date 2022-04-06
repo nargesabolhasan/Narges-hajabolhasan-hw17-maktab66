@@ -1,0 +1,70 @@
+@mixin flex ($align-items) {
+    display: flex;
+    flex-direction: row;
+    align-items: $align-items;
+    justify-content: center;
+}
+
+@mixin fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin breakpoint($point) {
+    @if $point == desktop {
+      @media (min-width: 70em) { @content ; }
+   }
+    @else if $point == laptop {
+      @media (min-width: 64em) { @content ; }
+   }
+     @else if $point == tablet {
+      @media (min-width: 50em) { @content ; }
+   }
+    @else if $point == phablet {
+      @media (min-width: 37.5em)  { @content ; }
+   }
+   @else if $point == mobileonly {
+      @media (max-width: 37.5em)  { @content ; }
+ 
+   }
+ }
+
+
+#root {
+    @include flex ("center");
+    @include fullscreen;
+}
+
+.App {
+    @include flex ("start");
+    @include fullscreen;
+    @include breakpoint(desktop){
+        font-size:30px;
+    }
+    @include breakpoint(tablet){
+        font-size:20px;
+    }
+    @include breakpoint(mobileonly){
+        font-size:10px;
+    }
+    margin-top:50px;
+}
+
+.SelectedItems {
+    text-align: center;
+    background-color: rgb(234, 108, 108);
+    width: 40%;
+    min-height:900px;
+}
+
+.AllItems {
+    text-align: center;
+    background-color: rgb(129, 222, 228);
+    width:40%;
+    height:900px;
+}
+li{
+    font-size:22px;
+    list-style: none;
+    margin-top:20px;
+}
