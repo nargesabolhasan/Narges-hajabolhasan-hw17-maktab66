@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import ListOfItems from './ListOfItems'
 import { SelectedContext } from './context/SelectedContext'
 
